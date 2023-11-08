@@ -1,0 +1,28 @@
+$schema: https://azuremlschemas.azureedge.net/latest/commandComponent.schema.json
+
+name: split
+display_name: split DS
+type: command
+
+inputs:
+  data_set: 
+    type: uri_file
+  split_ratio_train:
+    type: number
+    default: 0.8
+    
+outputs:
+  data_train:
+    type: uri_file
+  data_test:
+    type: uri_file
+
+
+code: ./split_src
+environment: azureml:AzureML-sklearn-1.0-ubuntu20.04-py38-cpu:1
+command: >-
+  python split.py 
+  --data_set ${{inputs.data_set}} 
+  --split_ratio_train ${{inputs.split_ratio_train}}   
+  --data_train ${{outputs.data_train}}
+  --data_test ${{outputs.data_test}}

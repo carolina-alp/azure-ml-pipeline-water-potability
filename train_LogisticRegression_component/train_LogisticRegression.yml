@@ -1,0 +1,20 @@
+$schema: https://azuremlschemas.azureedge.net/latest/commandComponent.schema.json
+
+name: train_logistic_regression
+display_name: train Logistic Regression
+type: command
+
+inputs:
+  data_train:
+    type: uri_file
+
+outputs:
+  model_output_lr_pickle:
+    type: uri_folder    
+
+environment: azureml:AzureML-sklearn-1.0-ubuntu20.04-py38-cpu:1
+code: ./train_LogisticRegression_src
+command: >-
+  python train_LogisticRegression.py 
+  --data_train ${{inputs.data_train}} 
+  --model_output_lr_pickle ${{outputs.model_output_lr_pickle}}

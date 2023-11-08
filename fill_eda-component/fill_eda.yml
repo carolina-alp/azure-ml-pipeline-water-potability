@@ -1,0 +1,24 @@
+$schema: https://azuremlschemas.azureedge.net/latest/commandComponent.schema.json
+
+name: fill_eda
+display_name: Fill DS and pairplot
+type: command
+
+inputs:
+  data_set: 
+    type: uri_file
+
+outputs:
+  data_clean:
+    type: uri_file
+  pairplot_fig:
+    type: uri_folder    
+
+
+code: ./fill_eda_src
+environment: azureml:project-Environment:1
+command: >-
+  python fill_eda.py 
+  --data_set ${{inputs.data_set}} 
+  --data_clean ${{outputs.data_clean}}
+  --pairplot_fig ${{outputs.pairplot_fig}}

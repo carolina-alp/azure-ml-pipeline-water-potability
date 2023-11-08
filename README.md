@@ -30,7 +30,7 @@ En primera instancia se cargan las herramientas necesarias desde `azure.ai.ml`
     ```
     def get_comput_target.
     ```
-    Denominado `cpu-cluster` Si no existe, se crea un nuevo recurso con las especificaciones. Si no existe, se crea un nuevo recurso con las especificaciones:
+    Denominado `cpu-cluster`, si no existe, se crea un nuevo recurso con las siguientes especificaciones:
     - Tipo: amlcompute
     - Tamaño: Standard_D2_v2
     - Tiempo de inactividad antes de la reducción de escala: 180 minutos
